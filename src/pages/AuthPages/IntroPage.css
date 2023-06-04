@@ -1,0 +1,22 @@
+
+.intropage-div{
+    width: 900px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.intropage-div-header{
+    text-align: center;
+}
+.intropage-div-header span{
+    color: #1E523E;
+}
+.intropage-div-header p{
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+}

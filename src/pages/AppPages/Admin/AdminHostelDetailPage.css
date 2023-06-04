@@ -1,0 +1,204 @@
+.admin-hostel-detailpage-container{
+    width: 100%;
+    height: 89.6vh;
+    background-color: rgba(249, 249, 249, 1);
+    position: absolute;
+    right: 0;
+    width: 80%;
+    /* border: 1px solid red; */
+    overflow-x: hidden;
+    padding: 1rem 2rem;
+}
+.admin-hostel-detailpage-container-back{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.admin-hostel-detailpage-container-back .arrow{
+    display: flex;
+    align-items: center;
+}
+.admin-hostel-detailpage-container-back .icon{
+    margin-right: 20px;
+}
+.admin-hostel-detailpage-container-back p{
+    font-size: 18px;
+}
+.admin-hostel-detailpage-div{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.admin-hostel-detailpage-div-images{
+    width: 57%;
+}
+.admin-hostel-detailpage-div-img-container{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+.admin-hostel-detailpage-div-img-container .arrow-button{
+    position: absolute;
+    top: 35%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.arrow-button .icon-left{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 40px;
+    height: 90px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.arrow-button .icon-right{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 40px;
+    height: 90px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.arrow-button .icon-left:active,.arrow-button .icon-right:active{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.admin-hostel-detailpage-div-img-container img{
+    width: 100%;
+    height: 100%;
+}
+.admin-hostel-detailpage-div-images-rows{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin-hostel-detailpage-div-images-cols{
+    width: 137px;
+    height: 80px;
+    /* margin-right: 20px; */
+}
+.admin-hostel-detailpage-div-images-cols:last-child{
+    width: 137px;
+    height: 80px;
+    margin-right: 0px;
+}
+.admin-hostel-detailpage-div-images-cols img{
+    width: 100%;
+    height: 100%;
+}
+.admin-hostel-detailpage-div-adminstrator{
+    display: flex;
+    width: 37%;
+    height: 300px;
+    background-color: rgba(217, 217, 217, 0.4);
+    border-radius: 20px;
+}
+.admin-hostel-detailpage-div-adminstrator-title{
+    width: 100%;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+.admin-hostel-detailpage-div-adminstrator-title p{
+    transform: rotate(-90.51deg);
+    color: rgba(30, 82, 62, 1);
+    font-size: 18px;
+}
+.admin-hostel-detailpage-div-adminstrator-des{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+.admin-hostel-detailpage-div-adminstrator-des-object{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-hostel-detailpage-div-adminstrator-des-img-container{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    border-radius: 50px;
+}
+.admin-hostel-detailpage-div-adminstrator-des-img-container img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    border-radius: 50px;
+}
+.admin-hostel-detailpage-div-adminstrator-des-object p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.admin-hostel-detailpage-div-button{
+    width: 191px;
+    height: 50px;
+}
+.admin-hostel-detailpage-div-minor-desc{
+    margin-top: 40px;
+}
+.admin-hostel-detailpage-div-minor-desc h2{
+    color: rgba(30, 82, 62, 1);
+    font-size: 30px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.admin-hostel-detailpage-div-minor-desc-product{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin-hostel-detailpage-div-minor-hostel-name{
+    width: 300px;
+    height: 75px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 13px 25px;
+}
+.admin-hostel-detailpage-div-minor-hostel-name p{
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.admin-hostel-detailpage-div-minor-hostel-name span{
+    color: rgba(128, 128, 128, 1);
+    font-weight: 400;
+    font-size: 15px;
+}
+.admin-hostel-detailpage-div-minor-hostel-sections{
+    width: 300px;
+    height: 75px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 13px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.admin-hostel-detailpage-div-minor-hostel-sections-icons{
+    text-align: center;
+}
+.admin-hostel-detailpage-room-flat-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: flex-start;
+}
+.admin-hostel-detailpage-room-flat-icon{
+    width: 217px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 13px 25px;
+    margin-bottom: 20px;
+    margin-right: 30px;
+    text-align: center;
+}

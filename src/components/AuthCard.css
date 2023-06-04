@@ -1,0 +1,21 @@
+.authcard-div{
+    width: 900px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.authcard-div-header{
+    text-align: center;
+}
+.authcard-div-header span{
+    color: #1E523E;
+}
+.authcard-div-header p{
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+}

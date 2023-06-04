@@ -1,0 +1,90 @@
+.admin-add-hostel-page-container{
+    border: 1px solid red;
+    height: 89.6vh;
+    position: absolute;
+    right: 0;
+    width: 80%;
+    background-color: #F9F9F9;
+    padding: 2rem 3rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* top: 0; */
+    /* width: ; */
+}
+.admin-add-hostel-div {
+    margin-bottom: 40px;
+}
+.admin-add-hostel-div h2{
+    font-weight: 300;
+}
+.admin-add-hostel-div .admin-add-hostel-container-field{
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+    height: 865px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+    flex-direction: column;
+}
+.admin-add-hostel-container-field h2{
+    font-size: 30px;
+    font-weight: 500;
+}
+.admin-add-hostel-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 700px;
+}
+.admin-add-hostel-form .admin-add-images{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.admin-add-images input{
+    display: none;
+}
+.admin-add-images label{
+    width: 150px;
+    height: 150px;
+    border: 2px solid #1E523E;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 82, 62, 0.2);
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.admin-number-of-items{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.admin-number-container{
+    width: 310px;
+    /* height: 60px; */
+    margin-bottom: 60px;
+    position: relative;
+}
+.admin-number-container p{
+    position: absolute;
+    right: 10px;
+    top: 55px;
+    color: #1E523E;
+}
+.admin-number-container label{
+    font-size: 19px;
+    font-weight: bold;
+}
+.admin-number-container input{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #808080;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}

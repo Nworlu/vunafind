@@ -1,0 +1,50 @@
+.container{
+    --fre: #000;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    gap: 0rem;
+}
+
+.emailVerify-div{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 6rem;
+}
+.emailVerify-div .emailVerify-header{
+    width: 100%;
+    margin-top: 7rem;
+}
+.emailVerify-header h1{
+    font-size: 45px;
+    color: var(--fre);
+    font-weight: bold;
+}
+.emailVerify-header p{
+    margin-top: 40px;
+    font-size: 17px;
+    color: var(--fre);
+    width: 200px;
+}
+.emailVerify-div .emailVerify-form-div{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 6rem;
+}
+.emailVerify-form-div .input-div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6rem;
+}
+.input-div .input-text{
+    width: 70px;
+    height: 70px;
+    border: 2px solid #1E523E;
+    border-radius: 10px;
+    font-size: 30px;
+    text-align: center;
+}

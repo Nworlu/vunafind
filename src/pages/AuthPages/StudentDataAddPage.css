@@ -1,0 +1,108 @@
+.container{
+    --fre: #008000;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    gap: 0rem;
+}
+
+.student-add-div{
+       width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 6rem;
+}
+.student-add-div .student-add-header{
+    width: 100%;
+    margin-top: 2rem;
+}
+.student-add-header h1{
+    font-size: 38px;
+    color:black;
+    font-weight: bold;
+}
+.student-add-header p{
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 300;
+    color: #808080;
+}
+.student-add-div .student-add-form-div{
+    margin-top: 35px;
+    font-weight: 300;
+    height: 100%;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.email-holder,.phone-holder{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 40px;
+    /* margin: 40px 0; */
+}
+.email-holder input, .text-holder textarea{
+    margin-top: 5px;
+    padding: 16px;
+    border: 2px solid #808080;
+    border-radius: 10px;
+    width: 100%;
+}
+/* .add-form-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+} */
+.text-holder textarea{
+    /* margin-bottom: 60px; */
+}
+.password-holder{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    margin: 50px 0;
+}
+.password-holder .show-password{
+    position: absolute;
+    top: 38px;
+    right: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.password-holder input{
+    margin: 5px 0;
+    padding: 16px;
+    border: 2px solid #808080;
+    border-radius: 10px;
+    width: 100%;
+}
+.password-holder a{
+    color: #808080;
+    text-decoration: none;
+    text-align: right;
+}
+
+.error{
+    color: red;
+}
+.checkbox-holder{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    width: 100%;
+    margin-top: 10px;
+}
+.checkbox-holder input{
+    margin-right: 20px;
+    width: 30px;
+    height: 40px;
+}
+.checkbox-holder p{
+    margin-top: 5px;
+    width: 270px;
+}

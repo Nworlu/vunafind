@@ -1,0 +1,67 @@
+.admin-manage-hostel-page-container{
+    border: 1px solid red;
+    height: 89.6vh;
+    position: absolute;
+    right: 0;
+    width: 80%;
+    background-color: #F9F9F9;
+    padding: 2rem 3rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* top: 0; */
+    /* width: ; */
+}
+.admin-manage-detail-div {
+    margin-bottom: 40px;
+}
+.admin-manage-detail-div h2{
+    font-weight: 300;
+}
+.admin-manage-detail-div .admin-manage-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.admin-manage-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 377px;
+    height: 135px;
+    background-color: white;
+    /* box-shadow: ; */
+    padding: 20px;
+    border-radius: 20px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.admin-manage-div p{
+    color: #808080;
+    font-size: 15px;
+}
+.admin-detail-stud{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.admin-stude-inner{
+    display: flex;
+    align-items: flex-end;
+}
+.admin-stude-inner h4{
+    font-size: 55px;
+    margin-right: 10px;
+}
+.admin-stude-inner p{
+    color: #1E523E;
+    font-size: 20px;
+    margin-bottom:10px;
+}
+.admin-detail-stud .icon{
+    position: absolute;
+    right: 0;
+    top: 2px;
+}

@@ -1,0 +1,8 @@
+.intropage-container{
+    background-image: url('../assets/back-image.jpeg');
+    height: 100vh;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

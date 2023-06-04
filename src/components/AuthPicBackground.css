@@ -1,0 +1,21 @@
+.image-container{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    /* margin: 20px;
+    margin-bottom: 40px; */
+    padding: 40px;
+}
+.image-container .contact-text{
+    position: absolute;
+    top: 10%;
+    left: 13%;
+    width: 600px;
+    font-size: 53px;
+    text-align: center;
+    color: white;
+}
+.image-container img{
+    width: 100%;
+    height: 100%;
+}
