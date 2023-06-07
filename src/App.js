@@ -27,6 +27,7 @@ import ForgotPasswordPage from './pages/AuthPages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/AuthPages/ResetPasswordPage';
 import axios from 'axios';
 import AuthProvider from './context/AuthContext';
+import StudentGetProfile from './pages/AppPages/Student/StudentGetProfile';
 const apiUrl = "https://vunafind.onrender.com";
 function App() {
   const location = useLocation()
@@ -70,6 +71,7 @@ function App() {
         <Route path='/resend-verification' element={<ResendVerificationPage />} />
         <Route path='/forgot-password' element={<ForgotPasswordPage />} />
         <Route path='/reset-password' element={<ResetPasswordPage />} />
+        <Route path='/student/getprofile/:id' element={<StudentGetProfile />} />
       </Routes>
 
       </AuthProvider>

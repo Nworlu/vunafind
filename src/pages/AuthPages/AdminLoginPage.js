@@ -14,7 +14,7 @@ const apiUrl = "https://vunafind.onrender.com";
 function AdminLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredMatricNumber, setEnteredMatricNumber] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [isLoggin, setIsLoggin] = useState(false);
   const authCtx = useContext(AuthContext);
 
@@ -50,21 +50,21 @@ function AdminLoginPage() {
   const navigate = useNavigate();
 
   function inputValidation() {
+    let email = enteredEmail.includes('@');
     let password = enteredPassword.length > 6;
-    let matricNo = enteredMatricNumber.includes('Vug/').toLowerCase();
     popUpMessage(
       "error",
       "red",
       "Failed Authentication!",
         !password
         ? "Your password must be more than 6 "
-        : !matricNo? "Please provide a vaild matric number": '',
+        : !email? "Please provide a vaild email": '',
       5000
     );
   }
   const data = {
+    email:enteredEmail,
     password: enteredPassword,
-    matricno:enteredMatricNumber
   };
   async function onSubmitHandler(e) {
     e.preventDefault();
@@ -82,8 +82,8 @@ function AdminLoginPage() {
           credentials: "include",
         }
       );
-      authCtx.authenticate(response.data.token);
-      authCtx.setUser(response.data.data.user);
+      authCtx.setUserData(response.data.data.user)
+      authCtx.setUserTokenData(response.data.token)
       popUpMessage(
         "success",
         "green",
@@ -92,12 +92,17 @@ function AdminLoginPage() {
         5000
       );
       console.log(response);
-      // if (response.data.data.user.isActive === false) {
-      //   navigate("/verify-email");
-      // }
+      navigate('/admin/dashboard')
+      if (response.data.data.user.isActive === false) {
+        navigate("/otp-verify");
+      } else if(response.data.data.user.isActive === true) {
+      navigate('/admin/dashboard')
+      } else if(response.data.data.user.role !== 'Admin'){
+        alert('You don\'t have permission to access this route.')
+      }
     } catch (error) {
       inputValidation();
-      console.log(error.response.data.error);
+      console.log(error);
     }
     setIsLoggin(false);
   }
@@ -117,17 +122,21 @@ function AdminLoginPage() {
     <AuthBackgroundImage>
         <AuthCard>
         <Title style={{marginTop:28}}><span style={{color:'#1E523E'}}>Admin</span> Login</Title>
-        <form className='admin-login-container'>
+        <form className='admin-login-container' autoComplete="off" onSubmit={onSubmitHandler}>
             <div className='email-holder'>
             <label>Veritas Email</label>
-            <input type={'email'} placeholder="Enter your veritas given email"/>
+            <input type={'email'} onChange={(e)=>setEnteredEmail(e.target.value)} value={enteredEmail} placeholder="Enter your veritas given email"
+              autoComplete="new-password"
+              />
             </div>
             <div className='password-holder'>
             <label>Password</label>
-            <input type={'email'} placeholder="Enter your valid Password"/>
+            <input type={'password'} onChange={(e)=>setEnteredPassword(e.target.value)} value={enteredPassword} placeholder="Enter your valid Password"
+              autoComplete="new-password"
+              />
             </div>
             <div style={{width:'150px'}}>
-                <PrimaryButton>
+                <PrimaryButton type={'submit'}>
                     Login
                 </PrimaryButton>
 

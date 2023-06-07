@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './AdminAddHostelPage.css'
 import axios from 'axios'
 import { Add, ArrowLeft } from 'iconsax-react';
@@ -7,12 +7,10 @@ import { AuthContext } from '../../../context/AuthContext';
 import Swal from 'sweetalert2';
 import { Image, Video, Transformation,  } from 'cloudinary-react';
 import { useNavigate } from 'react-router-dom';
-import PrimaryButton from '../../../components/PrimaryButton';
 const apiUrl = "https://vunafind.onrender.com";
 const CLOUDINARY_UPLOAD_PRESET = "b5ct6uia"
 function AdminAddHostelPage() {
-    const [selectedFile, setSelectedFile] = useState(Array(8).fill(null));
-    const [previewImages, setPreviewImages] = useState(Array(8).fill(null));
+    const [selectedFile, setSelectedFile] = useState(null);
     const [uploadedImage, setUploadedImage] = useState('');
     const [enteredName,setEnteredName] = useState('');
     const [enteredCapacity,setEnteredCapacity] = useState('');
@@ -22,21 +20,8 @@ function AdminAddHostelPage() {
     const [eneteredDescription,setEneteredDescription] = useState('');
     // const [make,setMake] = useState('');
     const authCtx = useContext(AuthContext)
-    const token = authCtx.userToken
+    const token = authCtx.token
     const navigate = useNavigate();
-    useEffect(()=>{
-        async function ping(){
-            try {
-                let response = await axios.get(`${apiUrl}/api/v1/hostel`,{headers:{
-                    Authorization: `Bearer ${token}`
-                }})
-                console.log(response)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        ping()
-    },[])
     function popUpMessage(icon, color, title, text, timer) {
         Swal.fire({
           icon: icon,
@@ -89,19 +74,10 @@ function AdminAddHostelPage() {
 		5000
       );
     }
-    function fileHandler(e, index) {
-        const files = e.target.files;
-        const fileArray = Array.from(files);
-        setSelectedFile((prevFiles) => {
-            prevFiles[index] = fileArray[0];
-            return [...prevFiles];
-          });
-
-          const fileURL = URL.createObjectURL(files[0]);
-          setPreviewImages((prevImages) => {
-            prevImages[index] = fileURL;
-            return [...prevImages];
-          });
+    function fileHandler(e) {
+        const files = e.target.files[0];
+        console.log(files)
+        setSelectedFile(files);
     }
     async function postData(url = "", data = {}) {
         // Default options are marked with *
@@ -124,76 +100,48 @@ function AdminAddHostelPage() {
     }
       async function handleUpload(e) {
         e.preventDefault()
-        if (selectedFile && selectedFile.length > 0) {
+        if (selectedFile) {
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+
+
+            axios
+              .post("https://api.cloudinary.com/v1_1/deqfgp7hg/upload", formData)
+              .then((response) => {
             setIsLoggin(true);
 
-            const formDataArray = selectedFile.map((file) => {
-              const formData = new FormData();
-              formData.append('file', file);
-              formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-              return formData;
-            });
+                postData(`${apiUrl}/api/v1/hostel/posthostel`,{image:response.data.secure_url, description:eneteredDescription,name:enteredName,price:parseInt(enteredPrice),capacity:parseInt(enteredCapacity), category:enteredCategory})
+                .then(res=>{
+            setIsLoggin(true);
 
-    const uploadPromises = formDataArray.map((formData) =>
-      axios.post("https://api.cloudinary.com/v1_1/deqfgp7hg/upload", formData)
-    );
-    Promise.all(uploadPromises)
-    .then((responses) => {
-        // setIsLoggin(false);
-      const imageUrls = responses.map((response) => response.data.secure_url);
-
-      const postDataPromises = imageUrls.map((imageUrl) =>
-        postData(`${apiUrl}/api/v1/hostel/posthostel`, {
-          image: imageUrl,
-          description: eneteredDescription,
-          name: enteredName,
-          price: parseInt(enteredPrice),
-          capacity: parseInt(enteredCapacity),
-          category: enteredCategory
-        })
-      );
-
-      Promise.all(postDataPromises)
-        .then((responses) => {
-            console.log(responses)
-        //   setIsLoggin(false);
-
-          responses.forEach((res) => {
-            if (res.success === true) {
-            //   navigate('/cars');
-        //   setIsLoggin(false);
-              popUpMessage(
-                "success",
-                "green",
-                "Successfully Uploaded",
-                "verify you email to login",
-                5000
-              );
-            }
-          });
-        })
-        .catch((error) => {
-          setIsLoggin(false);
-          console.log(error);
-        });
-    })
-    .catch((error) => {
+                    popUpMessage(
+                        "success",
+                        "green",
+                        "Successfully Uploaded",
+                        "verify you email to login",
+                        5000
+                      );
+                    console.log(res, 'image')
+                    if(res.success === true){
+                        navigate('/cars')
+                        setIsLoggin(false);
+                    }
+                })
+                // setUploadedImage(response.data.secure_url);
+                console.log(response)
+              })
+              .catch((error) => {
+                console.error('Error uploading image:', error);
+              });
+          }
       setIsLoggin(false);
-      console.error('Error uploading images:', error);
-      setIsLoggin(false);
-    });
-} else {
-  inputValidation();
-  setIsLoggin(false);
-}
-setIsLoggin(false);
-}
-// setIsLoggin(false);
 
-if (isLoggin) {
+        }
+        if (isLoggin) {
             loadingMessage(
-              "Creating Hostel!",
-              "Please wait while we create the Hostel"
+              "Creating Car!",
+              "Please wait while we create your car post"
             );
           }
     return (
@@ -205,19 +153,40 @@ if (isLoggin) {
                 </div>
                 <div className='admin-add-hostel-container-field'>
                     <h2>Add Images</h2>
-                    <form className='admin-add-hostel-form' onSubmit={handleUpload}>
+                    <form className='admin-add-hostel-form'>
                         <div className='admin-add-images'>
-                        {[...Array(8)].map((_, index) => (
-    <label key={index}>
-
-      {!previewImages[index] && <Add color='#1E523E' size={40}/>
-      }
-      <input type='file' multiple onChange={(e) => fileHandler(e, index)} />
-      {previewImages[index] && (
-        <img src={previewImages[index]} alt="Preview" className="preview-image" />
-      )}
-    </label>
-  ))}
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
+                            <label>
+                                <Add color='#1E523E' size={40}/>
+                                <input type='file' multiple onChange={fileHandler} />
+                            </label>
                         </div>
                         <div className='admin-number-of-items'>
                             <div className='admin-number-container'>
@@ -243,9 +212,6 @@ if (isLoggin) {
                                 <input type='text' value={enteredPrice} onChange={(e)=>setEnteredPrice(e.target.value)} placeholder='N 360,000' />
                             </div>
                         </div>
-                        <PrimaryButton type={'submit'}>
-                            Post
-                        </PrimaryButton>
                     </form>
                 </div>
             </div>

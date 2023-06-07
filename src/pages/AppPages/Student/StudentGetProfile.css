@@ -1,0 +1,120 @@
+.admin-manage-student-page-container{
+    border: 1px solid red;
+    height: 89.6vh;
+    position: absolute;
+    right: 0;
+    width: 80%;
+    background-color: #F9F9F9;
+    padding: 2rem 3rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* top: 0; */
+    /* width: ; */
+}
+.admin-manage-student-detail-div {
+    margin-bottom: 40px;
+}
+.admin-manage-student-detail-div h2{
+    font-weight: 300;
+}
+.admin-manage-student-detail-div .admin-get-profile-student-container{
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+    height: 661px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+    flex-direction: column;
+}
+.admin-get-profile-student-pic{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    /* flex-direction: column; */
+}
+.admin-get-profile-student-pic button{
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+.admin-get-profile-student-pic button:active{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: red;
+    border-radius: 20px;
+}
+.admin-get-profile-student-pic button:nth-child(2){
+    background-color: transparent;
+    border: none;
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+.admin-get-profile-student-pic button:nth-child(2):active{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    background-color: green;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.admin-get-student-img-container{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+.admin-get-student-img-container img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.admin-get-student-detail-form{
+    width: 100%;
+    margin-top: 30px;
+    padding:0 20px ;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.admin-student-little-detail{
+    margin-top: 20px;
+    margin-right: 25px;
+    /* width: 462px; */
+}
+.admin-name-get-container{
+    display: flex;
+    margin-top: 20px;
+}
+.admin-name-get-container h4{
+    font-size: 20px;
+}
+.admin-name-get-container p{
+    font-size: 25px;
+}
+.admin-student-matric{
+    margin-top: 10px;
+}
+.admin-student-matric h4{
+    font-size: 20px;
+}
+.admin-student-matric p{
+    font-size: 25px;
+}
