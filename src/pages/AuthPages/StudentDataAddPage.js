@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { AuthContext } from "../../context/AuthContext";
-const apiUrl = "https://turfind.onrender.com";
+const apiUrl = "https://vunafind.onrender.com";
 const StudentDataAddPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [enteredName, setEnteredName] = useState("");
@@ -92,7 +92,7 @@ const StudentDataAddPage = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://turfind.onrender.com", // replace with your own domain
+            "Access-Control-Allow-Origin": "https://vunafind.onrender.com", // replace with your own domain
           },
           mode: "cors",
           credentials: "include",

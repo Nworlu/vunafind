@@ -1,8 +1,149 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './AdminAddHostelPage.css'
+import axios from 'axios'
 import { Add, ArrowLeft } from 'iconsax-react';
 import user5 from '../../../assets/user5.png'
+import { AuthContext } from '../../../context/AuthContext';
+import Swal from 'sweetalert2';
+import { Image, Video, Transformation,  } from 'cloudinary-react';
+import { useNavigate } from 'react-router-dom';
+const apiUrl = "https://vunafind.onrender.com";
+const CLOUDINARY_UPLOAD_PRESET = "b5ct6uia"
 function AdminAddHostelPage() {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [uploadedImage, setUploadedImage] = useState('');
+    const [enteredName,setEnteredName] = useState('');
+    const [enteredCapacity,setEnteredCapacity] = useState('');
+    const [enteredCategory,setEnteredCategory] = useState('');
+    const [enteredPrice,setEnteredPrice] = useState('');
+    const [isLoggin, setIsLoggin] = useState(false);
+    const [eneteredDescription,setEneteredDescription] = useState('');
+    // const [make,setMake] = useState('');
+    const authCtx = useContext(AuthContext)
+    const token = authCtx.token
+    const navigate = useNavigate();
+    function popUpMessage(icon, color, title, text, timer) {
+        Swal.fire({
+          icon: icon,
+          color: color,
+          title: title,
+          text: text,
+          timer: timer,
+          showConfirmButton: false,
+        });
+      }
+      function loadingMessage(title, text) {
+        let timerInterval;
+        Swal.fire({
+          title: title,
+          text: text,
+          didOpen: () => {
+            Swal.showLoading();
+            timerInterval = setInterval(() => {}, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          },
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
+      }
+      function inputValidation() {
+		let name = enteredName !== ""
+		let capacity = enteredCapacity !== ""
+		let category = enteredCategory !== ""
+		let price = enteredPrice !== ""
+
+    //   let matricNo = enteredMatricNumber.includes('Vug/').toLowerCase();
+      popUpMessage(
+		"error",
+		"red",
+		"Failed!",
+		!name
+		  ? "Please provide make"
+		  : !capacity
+		  ? "Please provide model"
+		  : !category
+		  ? "Please Provide description"
+		  : !price
+		  ? "Please Provide price "
+		  :"",
+		5000
+      );
+    }
+    function fileHandler(e) {
+        const files = e.target.files[0];
+        console.log(files)
+        setSelectedFile(files);
+    }
+    async function postData(url = "", data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "cors", // no-cors, *cors, same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+                Accept:"application/json, text/plain, */*",
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: "follow", // manual, *follow, error
+            referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            body: JSON.stringify(data), // body data type must match "Content-Type" header
+        });
+        return response.json(); // parses JSON response into native JavaScript objects
+    }
+      async function handleUpload(e) {
+        e.preventDefault()
+        if (selectedFile) {
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+
+
+            axios
+              .post("https://api.cloudinary.com/v1_1/deqfgp7hg/upload", formData)
+              .then((response) => {
+            setIsLoggin(true);
+
+                postData(`${apiUrl}/api/v1/hostel/posthostel`,{image:response.data.secure_url, description:eneteredDescription,name:enteredName,price:parseInt(enteredPrice),capacity:parseInt(enteredCapacity), category:enteredCategory})
+                .then(res=>{
+            setIsLoggin(true);
+
+                    popUpMessage(
+                        "success",
+                        "green",
+                        "Successfully Uploaded",
+                        "verify you email to login",
+                        5000
+                      );
+                    console.log(res, 'image')
+                    if(res.success === true){
+                        navigate('/cars')
+                        setIsLoggin(false);
+                    }
+                })
+                // setUploadedImage(response.data.secure_url);
+                console.log(response)
+              })
+              .catch((error) => {
+                console.error('Error uploading image:', error);
+              });
+          }
+      setIsLoggin(false);
+
+        }
+        if (isLoggin) {
+            loadingMessage(
+              "Creating Car!",
+              "Please wait while we create your car post"
+            );
+          }
     return (
         <div className='admin-add-hostel-page-container'>
             <div className='admin-add-hostel-div'>
@@ -20,55 +161,55 @@ function AdminAddHostelPage() {
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                             <label>
                                 <Add color='#1E523E' size={40}/>
-                                <input type='file' />
+                                <input type='file' multiple onChange={fileHandler} />
                             </label>
                         </div>
                         <div className='admin-number-of-items'>
                             <div className='admin-number-container'>
                                 <label>Number of rooms</label>
-                                <input type='text' placeholder='5' />
+                                <input type='text' value={enteredCapacity} onChange={(e)=>setEnteredCapacity(e.target.value)} placeholder='5' />
                                 <p>Rooms</p>
                             </div>
-                            <div className='admin-number-container'>
+                            {/* <div className='admin-number-container'>
                                 <label>Number of bathrooms</label>
-                                <input type='text' placeholder='5' />
+                                <input type='text' value={enteredCapacity} onChange={(e)=>setEnteredCapacity(e.target.value)} placeholder='5' />
                                 <p>Bathrooms</p>
-                            </div>
+                            </div> */}
                             <div className='admin-number-container'>
                                 <label>Name of hostel</label>
-                                <input type='text' placeholder='Hostel B' />
+                                <input type='text' value={enteredName} onChange={(e)=>setEnteredName(e.target.value)} placeholder='Hostel B' />
                             </div>
                             <div className='admin-number-container'>
                                 <label>Hostel type</label>
-                                <input type='text' placeholder='Boy hostel' />
+                                <input type='text' value={enteredCategory} onChange={(e)=>setEnteredCategory(e.target.value)} placeholder='Boy hostel' />
                             </div>
                             <div className='admin-number-container'>
                                 <label>Price of hostel</label>
-                                <input type='text' placeholder='N 360,000' />
+                                <input type='text' value={enteredPrice} onChange={(e)=>setEnteredPrice(e.target.value)} placeholder='N 360,000' />
                             </div>
                         </div>
                     </form>

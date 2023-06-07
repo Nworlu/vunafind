@@ -20,3 +20,16 @@
     font-size: 18px;
     margin-top: 10px;
 }
+.intro-buttons .nav-buttons{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-buttons a{
+    text-decoration: none;
+    color: white;
+}
+.nav-buttons a:hover{
+    color: #1E523E;
+}

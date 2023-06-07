@@ -1,9 +1,9 @@
 import React from 'react'
 import './AuthCard.css'
 
-function AuthCard({children}) {
+function AuthCard({children,style}) {
   return (
-    <div className='authcard-div'>
+    <div className='authcard-div' style={style}>
        {children}
       </div>
   )

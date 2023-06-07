@@ -4,60 +4,61 @@
     height: 100vh;
     display: flex;
     gap: 0rem;
+    /* background-image: url('../../assets/back-image.jpeg'); */
 }
 
-.student-set-div{
+.signup-div{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0 5rem;
+    padding: 0 4rem;
     margin: auto 0;
+    /* margin-top: 40px; */
 }
-.student-set-div .student-set-header{
+.signup-div .signup-header{
     width: 100%;
     margin-top: 0px;
 }
-.student-set-header h1{
-    font-size: 38px;
+.signup-header h1{
+    font-size: 45px;
     color:white;
     font-weight: bold;
 }
-.student-set-header p{
+.signup-header p{
     margin-top: 10px;
     font-size: 17px;
     font-weight: 300;
-    color: white;
+    color: #fff;
 }
-.student-set-div .student-set-form-div{
+.signup-div .signup-form-div{
     margin-top: 35px;
     font-weight: 300;
 }
-.email-holder,.phone-holder{
+.signup-form-div .email-holder,.phone-holder,.name-holder,.matric-holder{
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     /* margin: 40px 0; */
-
 }
-.email-holder label,.phone-holder label{
+.signup-form-div .email-holder label,.phone-holder label, .matric-holder label, .name-holder label{
     color: white;
 }
-.email-holder input, .phone-holder input{
+.signup-form-div .email-holder input, .phone-holder input, .name-holder input, .matric-holder input{
     margin-top: 5px;
-    padding: 16px;
+    padding: 14px;
     border: 2px solid #808080;
     border-radius: 10px;
     width: 100%;
 }
-.password-holder{
+.signup-form-div .password-holder{
     display: flex;
     flex-direction: column;
     width: 100%;
     position: relative;
-    margin: 50px 0;
+    margin: 25px 0;
 }
-.password-holder .show-password{
+.signup-form-div .password-holder .show-password{
     position: absolute;
     top: 38px;
     right: 15px;
@@ -65,14 +66,17 @@
     background-color: transparent;
     cursor: pointer;
 }
-.password-holder input{
+.signup-form-div .password-holder label{
+    color: white;
+}
+.signup-form-div .password-holder input{
     margin: 5px 0;
-    padding: 16px;
+    padding: 14px;
     border: 2px solid #808080;
     border-radius: 10px;
     width: 100%;
 }
-.password-holder a{
+.signup-form-div .password-holder a{
     color: #808080;
     text-decoration: none;
     text-align: right;

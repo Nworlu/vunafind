@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext(null)
 
 
-function AuthProvider(){
+function AuthProvider({children}){
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')) || {})
     const [userToken,setUserToken] = useState(localStorage.getItem('userToken') || '')
 
@@ -32,7 +32,7 @@ function AuthProvider(){
     }
     return (
             <AuthContext.Provider value={value}>
-
+                {children}
             </AuthContext.Provider>
     )
 }

@@ -6,7 +6,7 @@ import PrimaryButton from '../../components/PrimaryButton'
 import SubTitle from '../../components/SubTitle'
 import Title from '../../components/Title'
 import './IntroPage.css'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function IntroPage() {
   let navigate = useNavigate()
@@ -21,13 +21,21 @@ function IntroPage() {
       Find the perfect hostel and roommate of your desire
       </SubTitle>
       </div>
-      <div style={{width: '500px'}}>
+      <div style={{width: '500px'}} className='intro-buttons'>
         <PrimaryButton onClick={()=>navigate('/admin/login')} style={{width:'100%'}}>
           Admin Login
         </PrimaryButton>
         <FlatButton onClick={()=>navigate('/student/login')} style={{marginTop: 30, width:'100%'}}>
           Student Login
         </FlatButton>
+        <div className='nav-buttons'>
+        <NavLink to='/admin/signup'>
+            Admin Sign up
+        </NavLink>
+        <NavLink to='/student/signup'>
+            Student Sign up
+        </NavLink>
+        </div>
       </div>
     </AuthCard>
     </AuthBackgroundImage>

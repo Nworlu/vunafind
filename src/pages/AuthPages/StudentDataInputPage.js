@@ -13,7 +13,9 @@ import Swal from "sweetalert2";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { AuthContext } from "../../context/AuthContext";
-const apiUrl = "https://turfind.onrender.com";
+import AuthBackgroundImage from "../../components/AuthBackgroundImage";
+import AuthCard from "../../components/AuthCard";
+const apiUrl = "https://vunafind.onrender.com";
 const StudentDataInputPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [enteredName, setEnteredName] = useState("");
@@ -87,12 +89,12 @@ const StudentDataInputPage = () => {
     setIsLoggin(true);
     try {
       const response = await axios.post(
-        `${apiUrl}/api/v1/auth/signup`,
+        `${apiUrl}/api/v1/user/createprofile/6474d1af9d20274c2eb6c9db`,
         JSON.stringify(data),
         {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://turfind.onrender.com", // replace with your own domain
+            "Access-Control-Allow-Origin": "https://vunafind.onrender.com", // replace with your own domain
           },
           mode: "cors",
           credentials: "include",
@@ -131,8 +133,10 @@ const StudentDataInputPage = () => {
   };
 
   return (
-    <div className="container">
-      <AuthPicBackground image={signupImage} alt={"student-set-image"} />
+    // <div className="container">
+      // <AuthPicBackground image={signupImage} alt={"student-set-image"} />
+      <AuthBackgroundImage style={{padding:30}}>
+        <AuthCard style={{width:800, height: '100%'}}>
       <div className="student-set-div">
         <div className="student-set-header">
           <h1>Set Profile (Primary Details)</h1>
@@ -201,7 +205,9 @@ const StudentDataInputPage = () => {
           text={"Login"}
         /> */}
       </div>
-    </div>
+        </AuthCard>
+      </AuthBackgroundImage>
+    // </div>
   );
 };
 

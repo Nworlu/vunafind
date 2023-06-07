@@ -1,4 +1,4 @@
-import "./OtpPage.css";
+import "./ResetPasswordPage.css";
 import axios from "axios";
 import { useState, useContext, useRef } from "react";
 import signupImage from "../../assets/signup-back.png";
@@ -16,12 +16,14 @@ import { AuthContext } from "../../context/AuthContext";
 import AuthBackgroundImage from "../../components/AuthBackgroundImage";
 import AuthCard from "../../components/AuthCard";
 const apiUrl = "https://vunafind.onrender.com";
-const OtpPage = () => {
+const ResetPasswordPage = () => {
     const authCtx = useContext(AuthContext)
     const [otp1,setOtp1] = useState("")
     const [otp2,setOtp2] = useState("")
     const [otp3,setOtp3] = useState("")
     const [otp4,setOtp4] = useState("")
+    const [eneteredPassword, setEnteredPassword] = useState("")
+    const [eneteredPasswordConfirm, setEnteredPasswordConfirm] = useState("")
     const [isLoggin, setIsLoggin] = useState(false)
 
     let navigate = useNavigate()
@@ -55,7 +57,7 @@ const OtpPage = () => {
       e.preventDefault()
       setIsLoggin(true)
       try {
-        const response = await axios.post(`${apiUrl}/api/v1/auth/verify`, JSON.stringify({otpCode:parseInt(otp)}), {
+        const response = await axios.post(`${apiUrl}/api/v1/auth/resetpassword`, JSON.stringify({otpCode:parseInt(otp), password:eneteredPassword,passwordConfirm:eneteredPasswordConfirm}), {
           headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': "https://vunafind.onrender.com", // replace with your own domain
@@ -64,11 +66,7 @@ const OtpPage = () => {
         credentials: 'include',
       })
       popUpMessage('success', 'green', 'Successful Verification!', 'Login to continue', 3000)
-      if(response.data.data.user.role === 'Student'){
-          navigate('/student/login', {replace: true})
-      } else if(response.data.data.user.role === 'Admin'){
-        navigate('/admin/login', {replace: true})
-      }
+      navigate('/login', {replace: true})
       console.log(response)
       } catch (error) {
         Swal.fire({
@@ -124,23 +122,33 @@ const OtpPage = () => {
   return (
     // <div className="container">
       // {/* <AuthPicBackground image={signupImage} alt={"signup-image"} /> */}
-      <AuthBackgroundImage>
-      <AuthCard>
-      <div className="emailVerify-div">
-        <div className="emailVerify-header">
-          <h1>Email Verification</h1>
+      <AuthBackgroundImage style={{padding:30,}}>
+      <AuthCard style={{width:800, height: '100%'}}>
+      <div className="resetPassword-div">
+        <div className="resetPassword-header">
+          <h1>Reset Password</h1>
           {/* <p>We sent a 4 digit Otp to {authCtx.userInfo.email}</p> */}
           <p>We sent a 4 digit Otp to </p>
         </div>
-        <form className="emailVerify-form-div" autoComplete="off" onSubmit={handleSubmit} >
+        <form className="resetPassword-form-div" autoComplete="off" onSubmit={handleSubmit} >
           <div className='input-div'>
             <input ref={otp1Ref} name='otp1'  value={otp1}  onChange={(e)=>setOtp1(e.target.value)} onKeyUp={(e)=>inputfocus(e)}  type='text'   className='input-text' tabIndex="1" maxLength="1" autoComplete="new-password" />
             <input ref={otp2Ref} name='otp2' value={otp2} onChange={(e)=>setOtp2(e.target.value)} onKeyUp={(e)=>inputfocus(e)}  type='text' className='input-text' tabIndex="2" maxLength="1" autoComplete="new-password"  />
             <input ref={otp3Ref} name='otp3' value={otp3} onChange={(e)=>setOtp3(e.target.value)} onKeyUp={(e)=>inputfocus(e)}  type='text' className='input-text' tabIndex="3" maxLength="1" autoComplete="new-password"  />
             <input ref={otp4Ref} name='otp4' value={otp4} onChange={(e)=>setOtp4(e.target.value)} onKeyUp={(e)=>inputfocus(e)} type='text' className='input-text' tabIndex="4" maxLength="1" autoComplete="new-password" />
           </div>
+          <div>
+          <div className='email-holder'>
+            <label>Password</label>
+            <input type={'password'} value={eneteredPassword} onChange={(e)=>setEnteredPassword(e.target.value)}  placeholder=""/>
+            </div>
+          <div className='email-holder'>
+            <label>Password Confirm</label>
+            <input type={'pasword'} value={eneteredPasswordConfirm} onChange={(e)=>setEnteredPasswordConfirm(e.target.value)}  placeholder=""/>
+            </div>
+          </div>
           <PrimaryButton>
-            Register
+            Confirm
           </PrimaryButton>
         </form>
       </div>
@@ -150,4 +158,4 @@ const OtpPage = () => {
   );
 };
 
-export default OtpPage;
+export default ResetPasswordPage;

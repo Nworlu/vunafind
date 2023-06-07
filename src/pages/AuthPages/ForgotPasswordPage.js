@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import './AdminLoginPage.css'
+import './ForgotPasswordPage.css'
 import AuthBackgroundImage from '../../components/AuthBackgroundImage'
 import AuthCard from '../../components/AuthCard'
 import PrimaryButton from '../../components/PrimaryButton'
@@ -8,13 +8,13 @@ import { AuthContext } from '../../context/AuthContext'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import SubTitle from '../../components/SubTitle'
 const apiUrl = "https://vunafind.onrender.com";
 
 
-function AdminLoginPage() {
+function ForgotPasswordPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredMatricNumber, setEnteredMatricNumber] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [isLoggin, setIsLoggin] = useState(false);
   const authCtx = useContext(AuthContext);
 
@@ -50,28 +50,26 @@ function AdminLoginPage() {
   const navigate = useNavigate();
 
   function inputValidation() {
-    let password = enteredPassword.length > 6;
-    let matricNo = enteredMatricNumber.includes('Vug/').toLowerCase();
+    let email = enteredEmail.includes('@');
     popUpMessage(
       "error",
       "red",
       "Failed Authentication!",
-        !password
-        ? "Your password must be more than 6 "
-        : !matricNo? "Please provide a vaild matric number": '',
+        !email
+        ? "Please provide a valid email address"
+        : '',
       5000
     );
   }
   const data = {
-    password: enteredPassword,
-    matricno:enteredMatricNumber
+    email: enteredEmail,
   };
   async function onSubmitHandler(e) {
     e.preventDefault();
     setIsLoggin(true);
     try {
       const response = await axios.post(
-        `${apiUrl}/api/v1/auth/adminlogin`,
+        `${apiUrl}/api/v1/auth/forgotPassword`,
         JSON.stringify(data),
         {
           headers: {
@@ -116,19 +114,16 @@ function AdminLoginPage() {
   return (
     <AuthBackgroundImage>
         <AuthCard>
-        <Title style={{marginTop:28}}><span style={{color:'#1E523E'}}>Admin</span> Login</Title>
-        <form className='admin-login-container'>
+        <Title style={{marginTop:28}}><span style={{color:'#1E523E'}}>Forgot Password?</span></Title>
+        <SubTitle>Please confirm your email to reset your password</SubTitle>
+        <form className='resend-verify-container'>
             <div className='email-holder'>
-            <label>Veritas Email</label>
-            <input type={'email'} placeholder="Enter your veritas given email"/>
+            <label>Email Address</label>
+            <input type={'email'} value={enteredEmail} onChange={(e)=>setEnteredEmail(e.target.value)} placeholder="Enter your email"/>
             </div>
-            <div className='password-holder'>
-            <label>Password</label>
-            <input type={'email'} placeholder="Enter your valid Password"/>
-            </div>
-            <div style={{width:'150px'}}>
+            <div style={{width:'100%'}}>
                 <PrimaryButton>
-                    Login
+                    Continue
                 </PrimaryButton>
 
             </div>
@@ -138,4 +133,4 @@ function AdminLoginPage() {
   )
 }
 
-export default AdminLoginPage
+export default ForgotPasswordPage
