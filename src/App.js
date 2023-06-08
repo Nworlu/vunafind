@@ -30,6 +30,8 @@ import AuthProvider from './context/AuthContext';
 import StudentGetProfile from './pages/AppPages/Student/StudentGetProfile';
 import AdminGetProfile from './pages/AppPages/Admin/AdminGetProfile';
 import AdminSetProfile from './pages/AuthPages/AdminSetProfile';
+import StudentGetRoom from './pages/AppPages/Student/StudentGetRoom';
+import StudentHostelDetailPage from './pages/AppPages/Student/StudentHostelDetailPage';
 const apiUrl = "https://vunafind.onrender.com";
 function App() {
   const location = useLocation()
@@ -56,6 +58,7 @@ function App() {
         <Route path='/admin/login' element={<AdminLoginPage />} />
         <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
         <Route path='/admin/dashboard/hostel-details/:id' element={<AdminHostelDetailPage />} />
+        <Route path='/student/dashboard/hostel-details/:id' element={<StudentHostelDetailPage />} />
         <Route path='/admin/dashboard/hostel-details-girl' element={<AdminGirlHostelDetailPage />} />
         <Route path='/student/login' element={<StudentLoginPage />} />
         <Route path='/student/dashboard' element={<StudentDashboardPage />} />
@@ -76,6 +79,7 @@ function App() {
         <Route path='/reset-password' element={<ResetPasswordPage />} />
         <Route path='/student/getprofile/:id' element={<StudentGetProfile />} />
         <Route path='/admin/getprofile/:id' element={<AdminGetProfile />} />
+        <Route path='/student/get-room' element={<StudentGetRoom />} />
       </Routes>
 
       </AuthProvider>

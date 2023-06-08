@@ -42,104 +42,6 @@ function AdminDashboardPage() {
       hostel: 'New hostel'
     },
   ])
-  const hostels =[
-    {
-      id:1,
-      name:'Hostel A',
-      price: '150,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:2,
-      name:'Hostel B',
-      price: '160,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:3,
-      name:'Hostel C',
-      price: '170,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:4,
-      name:'Hostel D',
-      price: '140,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:5,
-      name:'Hostel E',
-      price: '130,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:6,
-      name:'Hostel F',
-      price: '120,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:7,
-      name:'Hostel G',
-      price: '170,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:8,
-      name:'Hostel H',
-      price: '140,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:9,
-      name:'Hostel I',
-      price: '160,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:10,
-      name:'Pa-etos',
-      price: '150,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Female'
-    },
-    {
-      id:11,
-      name:'Cicl',
-      price: '240,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Female'
-    },
-    {
-      id:12,
-      name:'Stanzel',
-      price: '140,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Female'
-    },
-  ]
   const [hostel, setHostel] = useState([]);
   useEffect(() => {
     async function getHostels() {
@@ -188,7 +90,7 @@ let navigate = useNavigate()
 
   function getFilteredHostels() {
     const selectedHostel = isGender.find((data) => data.selected);
-    return hostels.filter(
+    return hostel.filter(
       (h) =>
         h.gender === selectedHostel.gender
         // h.type === selectedHostel.type

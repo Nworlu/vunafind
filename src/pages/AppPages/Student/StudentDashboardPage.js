@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import FlatButton from '../../../components/FlatButton'
 import PrimaryButton from '../../../components/PrimaryButton'
 import './StudentDashboardPage.css'
 import hostelPic from '../../../assets/hostel.png'
 import { AddCircle } from 'iconsax-react'
 import axios from 'axios'
+import { AuthContext } from '../../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const apiUrl = 'https://vunafind.onrender.com'
 
 function StudentDashboardPage() {
+  const authCtx = useContext(AuthContext)
+
   const [isGender,setIsGender] = useState([
     {
       id: 1,
@@ -23,18 +27,20 @@ function StudentDashboardPage() {
       hostel: 'New hostel'
     },
   ])
-  // const [isHostel,setIsHostel] = useState([
-  //   {
-  //     id: 1,
-  //     hostel: 'Old hostel',
-  //     selected: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     hostel: 'New hostel',
-  //     selected: false,
-  //   },
-  // ])
+  let navigate = useNavigate()
+  const [hostel, setHostel] = useState([]);
+  const [isHostel,setIsHostel] = useState([
+    {
+      id: 1,
+      hostel: 'Old hostel',
+      selected: true,
+    },
+    {
+      id: 2,
+      hostel: 'New hostel',
+      selected: false,
+    },
+  ])
   // const selectType = [
   //   {
   //     id: 1,
@@ -47,113 +53,18 @@ function StudentDashboardPage() {
   //     selected: false
   //   },
   // ]
-  const hostels =[
-    {
-      id:1,
-      name:'Hostel A',
-      price: '150,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:2,
-      name:'Hostel B',
-      price: '160,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:3,
-      name:'Hostel C',
-      price: '170,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:4,
-      name:'Hostel D',
-      price: '140,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:5,
-      name:'Hostel E',
-      price: '130,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:6,
-      name:'Hostel F',
-      price: '120,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:7,
-      name:'Hostel G',
-      price: '170,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:8,
-      name:'Hostel H',
-      price: '140,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:9,
-      name:'Hostel I',
-      price: '160,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Male'
-    },
-    {
-      id:10,
-      name:'Pa-etos',
-      price: '150,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Female'
-    },
-    {
-      id:11,
-      name:'Cicl',
-      price: '240,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Female'
-    },
-    {
-      id:12,
-      name:'Stanzel',
-      price: '140,000',
-      tag: 'old-hostel',
-      status:'Available',
-      gender: 'Female'
-    },
-  ]
+
   useEffect(()=>{
     async function getHostels(){
       try {
-        const response = await axios.get(`${apiUrl}/api/v1/hostel/hostels`, { headers:{
-
+        const response = await axios.get(`${apiUrl}/api/v1/hostel/hostels`, {
+          headers:{
+            Authorization: `Bearer ${authCtx.userToken}`
         }})
-        console.log(response)
+        console.log(response.data.hostels)
+        setHostel(response.data.hostels)
       } catch (error) {
-
+        console.log(error)
       }
     }
     getHostels()
@@ -171,8 +82,8 @@ function StudentDashboardPage() {
       console.log(updatedButtons)
   }
   function getFilteredHostels(){
-    const selectedHostel = isGender.find((data)=> data.selected)
-    return hostels.filter((h)=>h.gender === selectedHostel.gender)
+    const selectedHostel = isHostel.find((data)=> data.selected)
+    return hostel.filter((h)=>h.gender === selectedHostel.gender)
   }
   // function selectHostel(hostel){
   //   const updatedButtons = isHostel.map((data) => {
@@ -207,9 +118,9 @@ function StudentDashboardPage() {
       </div>
       <div className="student-dashboard-hostel-container">
         {getFilteredHostels().map((hostel) => (
-          <div className="student-dashboard-hostel-div" key={hostel.id}>
+          <div className="student-dashboard-hostel-div" onClick={(e)=>navigate(`/student/dashboard/hostel-details/${hostel._id}`)} key={hostel.id}>
             <div className="student-dashboard-hostel-img-container">
-              <img src={hostelPic} alt="hostel-pic" />
+              <img src={hostel?.images?.[0]} alt="hostel-pic" />
               <div className="student-dashboard-available">
                 <p></p>
                 <span>{hostel.status}</span>

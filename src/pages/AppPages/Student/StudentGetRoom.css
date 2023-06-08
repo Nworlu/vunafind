@@ -1,0 +1,31 @@
+.student-get-room-page{
+    width: 100%;
+    height: 89.6vh;
+    background-color: rgba(249, 249, 249, 1);
+    position: absolute;
+    right: 0;
+    width: 80%;
+    border: 1px solid red;
+    overflow-x: hidden;
+    padding: 1rem 2rem;
+}
+.student-get-room-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 500px;
+    height: 500px;
+    padding: 25px 20px;
+    background-color: white;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+.getroomInput{
+    width: 100%;
+}
+.getroomInput input{
+    padding: 15px 20px;
+    width: 100%;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
