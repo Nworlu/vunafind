@@ -2,11 +2,8 @@ import "./StudentSignupPage.css";
 import axios from "axios";
 import { useState, useContext } from "react";
 import signupImage from "../../assets/signup-back.png";
-// import googleIcon from "../../../assets/images/google.png";
-// import facebookIcon from "../../../assets/images/facebook.png";
 import { EyeSlash, Eye } from "iconsax-react";
 import { NavLink, useNavigate } from "react-router-dom";
-// import SocialComponent from "../../../components/ui/SocialComponent";
 import PrimaryButton from "../../components/PrimaryButton";
 import AuthPicBackground from "../../components/AuthPicBackground";
 import Swal from "sweetalert2";
@@ -50,7 +47,6 @@ const StudentSignupPage = () => {
         clearInterval(timerInterval);
       },
     }).then((result) => {
-      /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log("I was closed by the timer");
       }
@@ -103,9 +99,6 @@ const StudentSignupPage = () => {
           credentials: "include",
         }
       );
-      // console.log(response)
-      // authCtx.authenticate(response.data.token);
-      // authCtx.setUser(response.data.data.user);
       popUpMessage(
         "success",
         "green",
@@ -116,7 +109,7 @@ const StudentSignupPage = () => {
       console.log(response);
       authCtx.setUserData(response.data.data.user)
       authCtx.setUserTokenData(response.data.token)
-      // console.log(enteredPhoneNumber.length);
+
       if (response.data.data.user.isActive === false) {
         navigate("/otp-verify");
       }
@@ -144,7 +137,7 @@ const StudentSignupPage = () => {
   };
 
   return (
-    // <div className="container">
+
       <AuthBackgroundImage style={{padding:20}}>
         <AuthCard style={{width:'800px',height:'100%'}}>
       <div className="signup-div">
@@ -210,7 +203,7 @@ const StudentSignupPage = () => {
               onChange={setEnteredPhoneNumber}
               autoComplete="new-password"
             />
-            {/* <input type='tel' name="phoneHolder" id="phoneHolder" value={enteredPhoneNumber} onChange={(e)=>setEnteredPhoneNumber(e.target.value)} autoComplete='new-password' /> */}
+
           </div>
           <div className="matric-holder">
             <label htmlFor="matricHolder">Matric number</label>
@@ -224,23 +217,16 @@ const StudentSignupPage = () => {
             />
           </div>
           <PrimaryButton type={'submit'} style={{marginTop: 20}} disabled={isLoggin ? true : false}>
-            {/* {isLoggin ? "loading....." : "Register"} */}
+
             Register
           </PrimaryButton>
         </form>
-        {/* <SocialComponent
-          googleIcon={googleIcon}
-          url={"/login"}
-          facebookIcon={facebookIcon}
-          message={"Already have an account"}
-          text={"Login"}
-        /> */}
+
       </div>
 
         </AuthCard>
       </AuthBackgroundImage>
-    //    <AuthPicBackground image={signupImage} alt={"signup-image"} />
-    // </div>
+
   );
 };
 

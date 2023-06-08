@@ -2,11 +2,8 @@ import "./AdminSigupPage.css";
 import axios from "axios";
 import { useState, useContext } from "react";
 import signupImage from "../../assets/signup-back.png";
-// import googleIcon from "../../../assets/images/google.png";
-// import facebookIcon from "../../../assets/images/facebook.png";
 import { EyeSlash, Eye } from "iconsax-react";
 import { NavLink, useNavigate } from "react-router-dom";
-// import SocialComponent from "../../../components/ui/SocialComponent";
 import PrimaryButton from "../../components/PrimaryButton";
 import AuthPicBackground from "../../components/AuthPicBackground";
 import Swal from "sweetalert2";
@@ -133,12 +130,11 @@ const AdminSignupPage = () => {
   };
 
   return (
-    // <div className="container">
       <AuthBackgroundImage style={{padding:20}}>
         <AuthCard style={{width:'800px',height:'100%'}}>
       <div className="signup-div">
         <div className="signup-header">
-          <h1>APPLICANT LOGIN</h1>
+          <h1>ADMIN SIGNUP</h1>
           <p>Enter your details to gain access to our application</p>
         </div>
         <form
@@ -199,26 +195,18 @@ const AdminSignupPage = () => {
               onChange={setEnteredPhoneNumber}
               autoComplete="new-password"
             />
-            {/* <input type='tel' name="phoneHolder" id="phoneHolder" value={enteredPhoneNumber} onChange={(e)=>setEnteredPhoneNumber(e.target.value)} autoComplete='new-password' /> */}
           </div>
 
           <PrimaryButton style={{marginTop: 20}} disabled={isLoggin ? true : false}>
             {isLoggin ? "loading....." : "Register"}
           </PrimaryButton>
         </form>
-        {/* <SocialComponent
-          googleIcon={googleIcon}
-          url={"/login"}
-          facebookIcon={facebookIcon}
-          message={"Already have an account"}
-          text={"Login"}
-        /> */}
+
       </div>
 
         </AuthCard>
       </AuthBackgroundImage>
-    //    <AuthPicBackground image={signupImage} alt={"signup-image"} />
-    // </div>
+
   );
 };
 

@@ -64,7 +64,7 @@ function StudentDashboardPage() {
     return hostel.filter(
       (h) =>
         h.category === selectedHostel.gender
-        // h.type === selectedHostel.type
+
     );
   }
 

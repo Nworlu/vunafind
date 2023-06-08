@@ -88,7 +88,7 @@ function AdminLoginPage() {
         "success",
         "green",
         "Successful Authentication!",
-        "verify you email to login",
+        "Welcome Back",
         5000
       );
       console.log(response);
@@ -131,7 +131,7 @@ function AdminLoginPage() {
             </div>
             <div className='password-holder'>
             <label>Password</label>
-            <input type={'password'} onChange={(e)=>setEnteredPassword(e.target.value)} value={enteredPassword} placeholder="Enter your valid Password"
+            <input type={'password'} onChange={(e)=>setEnteredPassword(e.target.value)} value={enteredPassword} placeholder="Enter your Password"
               autoComplete="new-password"
               />
             </div>

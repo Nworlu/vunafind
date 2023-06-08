@@ -23,6 +23,7 @@ function Sidebar() {
                         <Home2 className='icon'/>
                         <span>Hostels</span>
                     </NavLink>
+                    
                 </li>
                 {/* <li>
                     <NavLink to={'/admin/profile'} style={sidebarStyle}>

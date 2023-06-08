@@ -40,7 +40,7 @@ function StudentLoginPage() {
         clearInterval(timerInterval);
       },
     }).then((result) => {
-      /* Read more about handling dismissals below */
+
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log("I was closed by the timer");
       }
@@ -87,7 +87,7 @@ function StudentLoginPage() {
         "success",
         "green",
         "Successful Authentication!",
-        "verify you email to login",
+        "Welcome Back",
         5000
       );
       console.log(response);
@@ -119,11 +119,11 @@ function StudentLoginPage() {
         <form className='student-login-container' onSubmit={onSubmitHandler}  autoComplete="off">
             <div className='email-holder'>
             <label>Veritas Email</label>
-            <input type={'text'} autoComplete="new-password" onChange={(e)=>setEnteredMatricNumber(e.target.value)} placeholder="Enter your veritas given email"/>
+            <input type={'text'} autoComplete="new-password" onChange={(e)=>setEnteredMatricNumber(e.target.value)} placeholder="Enter your matric number"/>
             </div>
             <div className='password-holder'>
             <label>Password</label>
-            <input type={'password'} autoComplete="new-password" onChange={(e)=>setEnteredPassword(e.target.value)} placeholder="Enter your valid Password"/>
+            <input type={'password'} autoComplete="new-password" onChange={(e)=>setEnteredPassword(e.target.value)} placeholder="Enter your Password"/>
             <button
               type="button"
               className="show-password"
