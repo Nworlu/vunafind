@@ -15,14 +15,14 @@ function StudentDashboardPage() {
     {
       id: 1,
       hostel: 'Old hostel',
-      gender: 'boys',
+      gender: 'Male',
       type: 'old',
       selected: true,
     },
     {
       id: 2,
       hostel: 'New hostel',
-      gender: 'girls',
+      gender: 'Female',
       type: 'new',
       selected: false,
     },
@@ -119,11 +119,6 @@ function StudentDashboardPage() {
           height: '80px',
         }}
       >
-        <PrimaryButton
-          style={{ borderRadius: '50%', width: '100%', height: '100%' }}
-        >
-          <AddCircle className="icon-add" />
-        </PrimaryButton>
       </div>
     </div>
   );

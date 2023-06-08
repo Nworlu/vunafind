@@ -110,7 +110,7 @@ function AdminLoginPage() {
   if (isLoggin) {
     loadingMessage(
       "Authenticating User!",
-      "Please wait while we create your account"
+      "Please wait while we verify your details"
     );
   }
 
