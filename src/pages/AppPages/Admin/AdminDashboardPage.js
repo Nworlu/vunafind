@@ -16,14 +16,14 @@ function AdminDashboardPage() {
     {
       id: 1,
       hostel: 'Old hostel',
-      gender: 'boys',
+      gender: 'Male',
       type: 'old',
       selected: true,
     },
     {
       id: 2,
       hostel: 'New hostel',
-      gender: 'girls',
+      gender: 'Female',
       type: 'new',
       selected: false,
     },
@@ -50,6 +50,7 @@ let navigate = useNavigate()
   function handleNav(){
     navigate('/admin/add-hostel')
   }
+
 
   function selectHostel(hostelId) {
     const updatedButtons = isHostel.map((data) => {
@@ -78,7 +79,7 @@ let navigate = useNavigate()
         <h2>Manage Hostels</h2>
         <div className='admin-dashboard-manage-buttons'>
         {isHostel.map((data) => (
-            <div>
+            <div key={data.id}>
             <button
               key={data.id}
               type="button"
@@ -104,7 +105,7 @@ let navigate = useNavigate()
       </div>
       <div className='admin-dashboard-hostel-container'>
       {getFilteredHostels().map((hostel) => (
-          <div className="student-dashboard-hostel-div" key={hostel.id}>
+          <div className="student-dashboard-hostel-div" onClick={(e)=>navigate(`/admin/dashboard/hostel-details/${hostel._id}`)} key={hostel._id}>
             <div className="student-dashboard-hostel-img-container">
               <img src={hostel?.images[0]} alt="hostel-pic" />
               <div className="student-dashboard-available">

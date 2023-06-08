@@ -28,6 +28,8 @@ import ResetPasswordPage from './pages/AuthPages/ResetPasswordPage';
 import axios from 'axios';
 import AuthProvider from './context/AuthContext';
 import StudentGetProfile from './pages/AppPages/Student/StudentGetProfile';
+import AdminGetProfile from './pages/AppPages/Admin/AdminGetProfile';
+import AdminSetProfile from './pages/AuthPages/AdminSetProfile';
 const apiUrl = "https://vunafind.onrender.com";
 function App() {
   const location = useLocation()
@@ -47,13 +49,13 @@ function App() {
   return (
     <div>
       <AuthProvider>
-      {location.pathname === '/' ? null : location.pathname === '/admin/login' ? null : location.pathname === '/student/login' ? null : location.pathname === '/admin/signup' ? null : location.pathname === '/otp-verify' ? null :location.pathname === '/student/set-profile' ? null:location.pathname === '/student/signup' ? null:location.pathname === '/student/add-info' ? null:location.pathname === '/resend-verification' ? null:location.pathname === '/forgot-password' ? null:location.pathname === '/reset-password'?null:<Navbar/>}
-      {location.pathname === '/' ? null : location.pathname === '/admin/login' ? null : location.pathname === '/student/login' ? null : location.pathname === '/admin/signup' ? null : location.pathname === '/otp-verify' ? null : location.pathname === '/student/set-profile' ? null: location.pathname === '/student/signup' ? null:location.pathname === '/student/add-info' ? null:location.pathname === '/resend-verification' ? null:location.pathname === '/forgot-password' ? null:location.pathname === '/reset-password'?null:<Sidebar/>}
+      {location.pathname === '/' ? null : location.pathname === '/admin/login' ? null : location.pathname === '/student/login' ? null : location.pathname === '/admin/signup' ? null : location.pathname === '/otp-verify' ? null :location.pathname === '/student/set-profile' ? null:location.pathname === '/student/signup' ? null:location.pathname === '/student/add-info' ? null:location.pathname === '/resend-verification' ? null:location.pathname === '/forgot-password' ? null:location.pathname === '/reset-password'?null:location.pathname === '/admin/set-profile'? null:<Navbar/>}
+      {location.pathname === '/' ? null : location.pathname === '/admin/login' ? null : location.pathname === '/student/login' ? null : location.pathname === '/admin/signup' ? null : location.pathname === '/otp-verify' ? null : location.pathname === '/student/set-profile' ? null: location.pathname === '/student/signup' ? null:location.pathname === '/student/add-info' ? null:location.pathname === '/resend-verification' ? null:location.pathname === '/forgot-password' ? null:location.pathname === '/reset-password'?null:location.pathname === '/admin/set-profile'? null:<Sidebar/>}
       <Routes>
         <Route path='/' element={<IntroPage />} />
         <Route path='/admin/login' element={<AdminLoginPage />} />
         <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
-        <Route path='/admin/dashboard/hostel-details' element={<AdminHostelDetailPage />} />
+        <Route path='/admin/dashboard/hostel-details/:id' element={<AdminHostelDetailPage />} />
         <Route path='/admin/dashboard/hostel-details-girl' element={<AdminGirlHostelDetailPage />} />
         <Route path='/student/login' element={<StudentLoginPage />} />
         <Route path='/student/dashboard' element={<StudentDashboardPage />} />
@@ -62,6 +64,7 @@ function App() {
         <Route path='/student/signup' element={<StudentSignupPage />} />
         <Route path='/otp-verify' element={<OtpPage />} />
         <Route path='/student/set-profile' element={<StudentDataInputPage />} />
+        <Route path='/admin/set-profile' element={<AdminSetProfile />} />
         <Route path='/student/add-info' element={<StudentDataAddPage />} />
         <Route path='/admin/manage-hostel/:id' element={<AdminManageHostel />} />
         <Route path='/admin/manage-student' element={<AdminManageFemaleStudents />} />
@@ -72,6 +75,7 @@ function App() {
         <Route path='/forgot-password' element={<ForgotPasswordPage />} />
         <Route path='/reset-password' element={<ResetPasswordPage />} />
         <Route path='/student/getprofile/:id' element={<StudentGetProfile />} />
+        <Route path='/admin/getprofile/:id' element={<AdminGetProfile />} />
       </Routes>
 
       </AuthProvider>

@@ -144,12 +144,13 @@ function AdminAddHostelPage() {
 
       const postDataPromises = imageUrls.map((imageUrl) =>
         postData(`${apiUrl}/api/v1/hostel/posthostel`, {
-          image: imageUrl,
-          description: eneteredDescription,
+          images: imageUrl,
+        //   description: eneteredDescription,
           name: enteredName,
           price: parseInt(enteredPrice),
           capacity: parseInt(enteredCapacity),
-          category: enteredCategory
+          category: enteredCategory,
+          user:authCtx.userInfo._id
         })
       );
 

@@ -1,0 +1,40 @@
+.admin-login-container{
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+.admin-login-container .email-holder{
+    display: flex;
+    flex-direction: column;
+}
+.admin-login-container .email-holder label{
+    color: white;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.admin-login-container .email-holder input{
+    padding: 15px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 17px;
+}
+.admin-login-container .password-holder{
+    display: flex;
+    flex-direction: column;
+}
+.admin-login-container .password-holder label{
+    color: white;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.admin-login-container .password-holder input{
+    padding: 15px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 17px;
+}

@@ -31,8 +31,8 @@ function Navbar() {
         </div>
         <div className='navbar-righty'>
             <Notification className='icon'/>
-            {!user.role === 'Student' &&
-            <Link to={`/student/getprofile/${authCtx.userInfo._id}`} className='navbar-img-container'>
+            {user.role === 'Admin' &&
+            <Link to={`/admin/getprofile/${authCtx.userInfo._id}`} className='navbar-img-container'>
                 <img src={userPic} alt='user-profile-pic'/>
             </Link>
             }
