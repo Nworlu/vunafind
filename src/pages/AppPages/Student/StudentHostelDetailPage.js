@@ -19,8 +19,12 @@ function StudentHostelDetailPage() {
     const [hostel, setHostel] = useState({})
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [open,setOpen] =useState(false)
+    const [open2,setOpen2] =useState(false)
     function openModal(){
-        setOpen(!open)
+        setOpen(true)
+    }
+    function openModal2(){
+        setOpen2(true)
     }
     let navigate = useNavigate()
     console.log(id)
@@ -135,14 +139,12 @@ function StudentHostelDetailPage() {
                             </span>
                         </PrimaryButton>
                     </div>
-                <PrimaryButton onClick={()=>navigate(`/student/get-room`,[hostel])}>
-                    Get Room
-                </PrimaryButton>
+                    <PrimaryButton type="button" onClick={() => navigate(`/student/get-room/${id}`)}>
+  Get Room
+</PrimaryButton>
                 </div>
             </div>
-            <div style={{position: 'absolute', backgroundColor: `rgba(0,0,0,0.3 )`, width: '100%'}} onClick={openModal} >
 
-            </div>
         </div>
 
     </div>

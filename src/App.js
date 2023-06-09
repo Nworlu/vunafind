@@ -79,7 +79,7 @@ function App() {
         <Route path='/reset-password' element={<ResetPasswordPage />} />
         <Route path='/student/getprofile/:id' element={<StudentGetProfile />} />
         <Route path='/admin/getprofile/:id' element={<AdminGetProfile />} />
-        <Route path='/student/get-room' element={<StudentGetRoom />} />
+        <Route path='/student/get-room/:id' element={<StudentGetRoom />} />
       </Routes>
 
       </AuthProvider>

@@ -20,6 +20,17 @@
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
 }
+.student-get-room-form-room{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 400px;
+    padding: 25px 20px;
+    background-color: white;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
 .getroomInput{
     width: 100%;
 }
