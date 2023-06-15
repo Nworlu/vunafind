@@ -4,8 +4,8 @@ import { AuthContext } from '../context/AuthContext';
 function ProtectedRoute({children}) {
     const authCtx = useContext(AuthContext)
 
-    if(!authCtx.token){
-        return <Navigate to={'/login'} />
+    if(!authCtx.userToken){
+        return <Navigate to={'/'} />
     }
 
 

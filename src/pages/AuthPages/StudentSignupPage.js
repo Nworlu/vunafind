@@ -205,17 +205,6 @@ const StudentSignupPage = () => {
             />
 
           </div>
-          <div className="matric-holder">
-            <label htmlFor="matricHolder">Matric number</label>
-            <input
-              type="text"
-              name="matricHolder"
-              value={enteredMatricNumber}
-              onChange={(e) => setEnteredMatricNumber(e.target.value)}
-              id="matricHolder"
-              autoComplete="new-password"
-            />
-          </div>
           <PrimaryButton type={'submit'} style={{marginTop: 20}} disabled={isLoggin ? true : false}>
 
             Register

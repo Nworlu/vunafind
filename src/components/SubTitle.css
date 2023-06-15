@@ -3,3 +3,16 @@
     font-size: 18px;
     margin-top: 10px;
 }
+
+@media screen and (max-width:325px) {
+    .sub-title{
+        font-size: 15px;
+        margin-top: 15px;
+    }
+}
+@media screen and (max-width:430px) {
+    .sub-title{
+        font-size: 15px;
+        margin-top: 15px;
+    }
+}

@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import IntroPage from './pages/AuthPages/IntroPage';
 import AdminLoginPage from './pages/AuthPages/AdminLoginPage';
 import StudentLoginPage from './pages/AuthPages/StudentLoginPage';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import AdminDashboardPage from './pages/AppPages/Admin/AdminDashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -32,6 +31,8 @@ import AdminGetProfile from './pages/AppPages/Admin/AdminGetProfile';
 import AdminSetProfile from './pages/AuthPages/AdminSetProfile';
 import StudentGetRoom from './pages/AppPages/Student/StudentGetRoom';
 import StudentHostelDetailPage from './pages/AppPages/Student/StudentHostelDetailPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import ChatSystem from './pages/AppPages/ChatSystem';
 const apiUrl = "https://vunafind.onrender.com";
 function App() {
   const location = useLocation()
@@ -56,8 +57,16 @@ function App() {
       <Routes>
         <Route path='/' element={<IntroPage />} />
         <Route path='/admin/login' element={<AdminLoginPage />} />
-        <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
-        <Route path='/admin/dashboard/hostel-details/:id' element={<AdminHostelDetailPage />} />
+          <Route path='/admin/dashboard' element={
+          <ProtectedRoute>
+              <AdminDashboardPage />
+              </ProtectedRoute>
+          } />
+        <Route path='/admin/dashboard/hostel-details/:id' element={
+          <ProtectedRoute>
+            <AdminHostelDetailPage />
+          </ProtectedRoute>
+        } />
         <Route path='/student/dashboard/hostel-details/:id' element={<StudentHostelDetailPage />} />
         <Route path='/admin/dashboard/hostel-details-girl' element={<AdminGirlHostelDetailPage />} />
         <Route path='/student/login' element={<StudentLoginPage />} />
@@ -79,7 +88,8 @@ function App() {
         <Route path='/reset-password' element={<ResetPasswordPage />} />
         <Route path='/student/getprofile/:id' element={<StudentGetProfile />} />
         <Route path='/admin/getprofile/:id' element={<AdminGetProfile />} />
-        <Route path='/student/get-room/:id' element={<StudentGetRoom />} />
+        <Route path='/student/get-room' element={<StudentGetRoom />} />
+        <Route path='/chat-system' element={<ChatSystem />} />
       </Routes>
 
       </AuthProvider>

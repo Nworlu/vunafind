@@ -132,9 +132,7 @@ const StudentDataInputPage = () => {
     );
   }
 
-  const viewPasswordHandler = () => {
-    setShowPassword(!showPassword);
-  };
+
 
   return (
     // <div className="container">

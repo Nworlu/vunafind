@@ -92,7 +92,7 @@ let navigate = useNavigate()
     const selectedHostel = isGender.find((data) => data.selected);
     return hostel.filter(
       (h) =>
-        h.gender === selectedHostel.gender
+        h.gender === selectedHostel.category
         // h.type === selectedHostel.type
     );
   }
@@ -120,7 +120,7 @@ let navigate = useNavigate()
       {getFilteredHostels().map((hostel) => (
           <div className="student-dashboard-hostel-div" onClick={(e)=>navigate(`/admin/dashboard/hostel-details/${hostel._id}`)} key={hostel._id}>
             <div className="student-dashboard-hostel-img-container">
-              <img src={hostelPic} alt="hostel-pic" />
+              <img src={hostel?.images?.[0]} alt="hostel-pic" />
               <div className="student-dashboard-available">
                 <p></p>
                 <span>{hostel.status}</span>

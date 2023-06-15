@@ -97,44 +97,69 @@ const navigate = useNavigate();
 
   return (
     <div className='sidebar-container'>
-        <div>
+      <div>
         <div className='sidebar-img-container'>
-            <img src={logo} alt='logo' />
+          <img src={logo} alt='logo' />
         </div>
         <div className='sidebar-list-container'>
           {user && user.role === 'Student' && (
             <ul>
-                <li>
-                    <NavLink to={'/student/dashboard'} style={sidebarStyle}>
-                        <Home2 className='icon'/>
-                        <span>Hostels</span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={'/student/get-room'} style={sidebarStyle}>
-                        <Home2 className='icon'/>
-                        <span>Get Room</span>
-                    </NavLink>
-                </li>
+              <li>
+                <NavLink to={'/student/dashboard'} style={sidebarStyle}>
+                  <Home2 className='icon' />
+                  <span>Hostels</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={'/student/get-room'} style={sidebarStyle}>
+                  <Home2 className='icon' />
+                  <span>Get Room</span>
+                </NavLink>
+              </li>
             </ul>
           )}
           {user && user.role === 'Admin' && (
             <ul>
-                <li>
-                    <NavLink to={'/admin/dashboard'} style={sidebarStyle}>
-                        <Home2 className='icon'/>
-                        <span>Hostels</span>
-                    </NavLink>
-
-                </li>
+              <li>
+                <NavLink to={'/admin/dashboard'} style={sidebarStyle}>
+                  <Home2 className='icon' />
+                  <span>Hostels</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={'/admin/manage-male-student'} style={sidebarStyle}>
+                  <Home2 className='icon' />
+                  <span>Students</span>
+                </NavLink>
+              </li>
             </ul>
           )}
         </div>
-        </div>
+      </div>
 
-          <div style={{width:150, display: 'block', marginTop:15, marginBottom:15}}>
-            <button onClick={handleLogout} style={{width: '100%', padding:10, borderRadius:20, border: 'none', backgroundColor:'red', color:'white', fontSize:19}}>Log out</button>
-          </div>
+      <div
+        style={{
+          width: 150,
+          display: 'block',
+          marginTop: 15,
+          marginBottom: 15,
+        }}
+      >
+        <button
+          onClick={handleLogout}
+          style={{
+            width: '100%',
+            padding: 10,
+            borderRadius: 20,
+            border: 'none',
+            backgroundColor: 'red',
+            color: 'white',
+            fontSize: 19,
+          }}
+        >
+          Log out
+        </button>
+      </div>
     </div>
   )
 }

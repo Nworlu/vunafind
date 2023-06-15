@@ -21,7 +21,7 @@ function IntroPage() {
       Find the perfect hostel and roommate of your desire
       </SubTitle>
       </div>
-      <div style={{width: '500px'}} className='intro-buttons'>
+      <div className='intro-buttons'>
         <PrimaryButton onClick={()=>navigate('/admin/login')} style={{width:'100%'}}>
           Admin Login
         </PrimaryButton>

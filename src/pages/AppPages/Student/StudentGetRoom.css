@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 500px;
-    height: 500px;
+    height: 100px;
     padding: 25px 20px;
     background-color: white;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
@@ -23,9 +23,9 @@
 .student-get-room-form-room{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 400px;
-    height: 400px;
+    /* justify-content: space-between; */
+    width: 450px;
+    height: 200px;
     padding: 25px 20px;
     background-color: white;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
@@ -33,6 +33,7 @@
 }
 .getroomInput{
     width: 100%;
+    margin: 20px 0;
 }
 .getroomInput input{
     padding: 15px 20px;

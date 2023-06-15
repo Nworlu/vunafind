@@ -3,3 +3,13 @@
     font-weight: 400;
     font-size: 40px;
 }
+@media screen and (max-width:325px) {
+    .title{
+        font-size: 30px;
+    }
+}
+@media screen and (max-width:430px) {
+    .title{
+        font-size: 30px;
+    }
+}

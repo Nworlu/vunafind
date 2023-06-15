@@ -9,6 +9,7 @@
 .student-login-container .email-holder{
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 .student-login-container .email-holder label{
     color: white;
@@ -26,6 +27,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 30px 0;
 }
 .student-login-container .password-holder button{
     position: absolute;

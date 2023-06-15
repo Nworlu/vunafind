@@ -12,6 +12,7 @@ import userPic2 from '../../../assets/user2.png'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthContext'
+import GetRoomModal from '../../../components/GetRoomModal'
 const apiUrl = 'https://vunafind.onrender.com'
 function StudentHostelDetailPage() {
     const authCtx = useContext(AuthContext)
@@ -20,12 +21,12 @@ function StudentHostelDetailPage() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [open,setOpen] =useState(false)
     const [open2,setOpen2] =useState(false)
-    function openModal(){
-        setOpen(true)
-    }
-    function openModal2(){
-        setOpen2(true)
-    }
+    // function openModal(){
+    //     setOpen(true)
+    // }
+    // function openModal2(){
+    //     setOpen2(true)
+    // }
     let navigate = useNavigate()
     console.log(id)
     useEffect(()=>{
@@ -50,6 +51,10 @@ function StudentHostelDetailPage() {
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === hostel.images.length - 1 ? 0 : prevIndex + 1));
   };
+
+    function openGetRoom() {
+        setOpen(true)
+    }
 
   return (
     <div className='admin-hostel-detailpage-container'>
@@ -139,12 +144,12 @@ function StudentHostelDetailPage() {
                             </span>
                         </PrimaryButton>
                     </div>
-                    <PrimaryButton type="button" onClick={() => navigate(`/student/get-room/${id}`)}>
+                    <PrimaryButton type="button" onClick={openGetRoom}>
   Get Room
 </PrimaryButton>
                 </div>
             </div>
-
+                    {open && <GetRoomModal/>}
         </div>
 
     </div>
