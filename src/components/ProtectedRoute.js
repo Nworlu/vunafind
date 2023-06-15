@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 function ProtectedRoute({children}) {
     const authCtx = useContext(AuthContext)
 
-    if(!authCtx.userToken){
+    if(!authCtx.userToken && !authCtx.userInfo.role === 'Admin') {
         return <Navigate to={'/'} />
     }
 

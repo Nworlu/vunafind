@@ -52,49 +52,135 @@ function App() {
   return (
     <div>
       <AuthProvider>
-      {location.pathname === '/' ? null : location.pathname === '/admin/login' ? null : location.pathname === '/student/login' ? null : location.pathname === '/admin/signup' ? null : location.pathname === '/otp-verify' ? null :location.pathname === '/student/set-profile' ? null:location.pathname === '/student/signup' ? null:location.pathname === '/student/add-info' ? null:location.pathname === '/resend-verification' ? null:location.pathname === '/forgot-password' ? null:location.pathname === '/reset-password'?null:location.pathname === '/admin/set-profile'? null:<Navbar/>}
-      {location.pathname === '/' ? null : location.pathname === '/admin/login' ? null : location.pathname === '/student/login' ? null : location.pathname === '/admin/signup' ? null : location.pathname === '/otp-verify' ? null : location.pathname === '/student/set-profile' ? null: location.pathname === '/student/signup' ? null:location.pathname === '/student/add-info' ? null:location.pathname === '/resend-verification' ? null:location.pathname === '/forgot-password' ? null:location.pathname === '/reset-password'?null:location.pathname === '/admin/set-profile'? null:<Sidebar/>}
-      <Routes>
-        <Route path='/' element={<IntroPage />} />
-        <Route path='/admin/login' element={<AdminLoginPage />} />
-          <Route path='/admin/dashboard' element={
-          <ProtectedRoute>
-              <AdminDashboardPage />
+        {location.pathname === '/' ? null : location.pathname ===
+          '/admin/login' ? null : location.pathname ===
+          '/student/login' ? null : location.pathname ===
+          '/admin/signup' ? null : location.pathname ===
+          '/otp-verify' ? null : location.pathname ===
+          '/student/set-profile' ? null : location.pathname ===
+          '/student/signup' ? null : location.pathname ===
+          '/student/add-info' ? null : location.pathname ===
+          '/resend-verification' ? null : location.pathname ===
+          '/forgot-password' ? null : location.pathname ===
+          '/reset-password' ? null : location.pathname ===
+          '/admin/set-profile' ? null : (
+          <Navbar />
+        )}
+        {location.pathname === '/' ? null : location.pathname ===
+          '/admin/login' ? null : location.pathname ===
+          '/student/login' ? null : location.pathname ===
+          '/admin/signup' ? null : location.pathname ===
+          '/otp-verify' ? null : location.pathname ===
+          '/student/set-profile' ? null : location.pathname ===
+          '/student/signup' ? null : location.pathname ===
+          '/student/add-info' ? null : location.pathname ===
+          '/resend-verification' ? null : location.pathname ===
+          '/forgot-password' ? null : location.pathname ===
+          '/reset-password' ? null : location.pathname ===
+          '/admin/set-profile' ? null : (
+          <Sidebar />
+        )}
+        <Routes>
+          <Route path='/' element={<IntroPage />} />
+          {/* Admin routes */}
+          <Route path='/admin/login' element={<AdminLoginPage />} />
+          <Route
+            path='/admin/dashboard'
+            element={
+              <ProtectedRoute>
+                <AdminDashboardPage />
               </ProtectedRoute>
-          } />
-        <Route path='/admin/dashboard/hostel-details/:id' element={
-          <ProtectedRoute>
-            <AdminHostelDetailPage />
-          </ProtectedRoute>
-        } />
-        <Route path='/student/dashboard/hostel-details/:id' element={<StudentHostelDetailPage />} />
-        <Route path='/admin/dashboard/hostel-details-girl' element={<AdminGirlHostelDetailPage />} />
-        <Route path='/student/login' element={<StudentLoginPage />} />
-        <Route path='/student/dashboard' element={<StudentDashboardPage />} />
-        <Route path='/*' element={<NotFoundPage />} />
-        <Route path='/admin/signup' element={<AdminSignupPage />} />
-        <Route path='/student/signup' element={<StudentSignupPage />} />
-        <Route path='/otp-verify' element={<OtpPage />} />
-        <Route path='/student/set-profile' element={<StudentDataInputPage />} />
-        <Route path='/admin/set-profile' element={<AdminSetProfile />} />
-        <Route path='/student/add-info' element={<StudentDataAddPage />} />
-        <Route path='/admin/manage-hostel/:id' element={<AdminManageHostel />} />
-        <Route path='/admin/manage-student' element={<AdminManageFemaleStudents />} />
-        <Route path='/admin/manage-male-student' element={<AdminManageMaleStudents />} />
-        <Route path='/admin/get-student-profile/:id' element={<AdminGetStudentProfile />} />
-        <Route path='/admin/add-hostel' element={<AdminAddHostelPage />} />
-        <Route path='/resend-verification' element={<ResendVerificationPage />} />
-        <Route path='/forgot-password' element={<ForgotPasswordPage />} />
-        <Route path='/reset-password' element={<ResetPasswordPage />} />
-        <Route path='/student/getprofile/:id' element={<StudentGetProfile />} />
-        <Route path='/admin/getprofile/:id' element={<AdminGetProfile />} />
-        <Route path='/student/get-room' element={<StudentGetRoom />} />
-        <Route path='/chat-system' element={<ChatSystem />} />
-      </Routes>
+            }
+          />
+          <Route
+            path='/admin/dashboard/hostel-details/:id'
+            element={
+              <ProtectedRoute>
+                <AdminHostelDetailPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/admin/dashboard/hostel-details-girl'
+            element={
+              <ProtectedRoute>
+                <AdminGirlHostelDetailPage />
+              </ProtectedRoute>
+            }
+          />
 
+          <Route path='/*' element={<NotFoundPage />} />
+          <Route path='/admin/signup' element={
+            <ProtectedRoute>
+              <AdminSignupPage />
+            </ProtectedRoute>
+          } />
+
+          <Route path='/admin/getprofile/:id' element={
+            <ProtectedRoute>
+              <AdminGetProfile />
+            </ProtectedRoute>
+          } />
+          <Route path='/admin/set-profile' element={
+            <ProtectedRoute>
+            <AdminSetProfile />
+            </ProtectedRoute>
+          } />
+          <Route
+            path='/admin/manage-hostel/:id'
+            element={
+              <ProtectedRoute>
+                <AdminManageHostel />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/admin/manage-student'
+            element={<AdminManageFemaleStudents />}
+          />
+          <Route
+            path='/admin/manage-male-student'
+            element={<AdminManageMaleStudents />}
+          />
+          <Route
+            path='/admin/get-student-profile/:id'
+            element={<AdminGetStudentProfile />}
+          />
+          <Route path='/admin/add-hostel' element={<AdminAddHostelPage />} />
+          {/* Auth routes */}
+          <Route
+            path='/resend-verification'
+            element={<ResendVerificationPage />}
+          />
+          <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+          <Route path='/reset-password' element={<ResetPasswordPage />} />
+          <Route path='/otp-verify' element={<OtpPage />} />
+
+          {/* Student routes */}
+          <Route
+            path='/student/getprofile/:id'
+            element={<StudentGetProfile />}
+          />
+          <Route
+            path='/student/dashboard/hostel-details/:id'
+            element={<StudentHostelDetailPage />}
+          />
+
+          <Route path='/student/login' element={<StudentLoginPage />} />
+          <Route path='/student/dashboard' element={<StudentDashboardPage />} />
+          <Route path='/student/signup' element={<StudentSignupPage />} />
+
+          <Route
+            path='/student/set-profile'
+            element={<StudentDataInputPage />}
+          />
+          <Route path='/student/add-info' element={<StudentDataAddPage />} />
+          <Route path='/student/get-room' element={<StudentGetRoom />} />
+          <Route path='/chat-system' element={<ChatSystem />} />
+        </Routes>
       </AuthProvider>
     </div>
-  );
+  )
 }
 
 export default App;

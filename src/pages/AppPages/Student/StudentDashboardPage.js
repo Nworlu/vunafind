@@ -82,7 +82,8 @@ function StudentDashboardPage() {
       console.log(updatedButtons)
   }
   function getFilteredHostels(){
-    const selectedHostel = isHostel.find((data)=> data.selected)
+    const selectedHostel = isHostel.find((data) => data.selected)
+    console.log(selectedHostel)
     return hostel.filter((h)=>h.gender === selectedHostel.gender)
   }
   // function selectHostel(hostel){
@@ -99,7 +100,7 @@ function StudentDashboardPage() {
   return (
     <div className='student-dashboard-container'>
       <div className='student-dashboard-manage-hostel'>
-        <h2>Male Hostels</h2>
+        <h2>All Hostels</h2>
         <div className='student-dashboard-manage-buttons'>
           {isGender.map(data=>{
             return(

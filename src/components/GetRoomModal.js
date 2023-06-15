@@ -17,7 +17,7 @@ const GetRoomModal = () => {
     localStorage.setItem('generated', 'true')
     alert('Generating room in progress......')
 
-    
+
     alert('You have successfully be allocated a room')
     navigate('/student/get-room')
   }
@@ -28,22 +28,34 @@ const GetRoomModal = () => {
           <h3>SELECT DESIRED ROOM AND BED SPACE</h3>
           <form className='get-room-form' onSubmit={allocateRoom}>
             <div className='selectHolder'>
+              <label htmlFor='roomNumber'>Room Number</label>
               <select
+                id='roomNumber'
                 value={getRoom}
                 onChange={(e) => setGetRoom(e.target.value)}
               >
                 {rooms.map((room) => {
-                  return <option key={room} value={room}>{room}</option>
+                  return (
+                    <option key={room} value={room}>
+                      {room}
+                    </option>
+                  )
                 })}
               </select>
             </div>
             <div className='selectHolder'>
+              <label htmlFor='bedSpace'>Bed Space</label>
               <select
+                id='bedSpace'
                 value={getBed}
                 onChange={(e) => setGetBed(e.target.value)}
               >
                 {beds.map((bed) => {
-                  return <option key={bed} value={bed}>{bed}</option>
+                  return (
+                    <option key={bed} value={bed}>
+                      {bed}
+                    </option>
+                  )
                 })}
               </select>
             </div>

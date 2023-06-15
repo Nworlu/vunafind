@@ -92,7 +92,7 @@ let navigate = useNavigate()
     const selectedHostel = isGender.find((data) => data.selected);
     return hostel.filter(
       (h) =>
-        h.gender === selectedHostel.category
+        h.gender === selectedHostel.gender
         // h.type === selectedHostel.type
     );
   }

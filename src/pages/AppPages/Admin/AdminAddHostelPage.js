@@ -146,7 +146,7 @@ async function handleUpload(e) {
         'success',
         'green',
         'Successfully Uploaded',
-        'Verify your email to login',
+        'Your Hostel has been successfully uploaded',
         5000
       )
       navigate('/admin/dashboard')
