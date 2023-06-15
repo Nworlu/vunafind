@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AuthBackgroundImage from '../../components/AuthBackgroundImage'
 import AuthCard from '../../components/AuthCard'
 import FlatButton from '../../components/FlatButton'
@@ -7,10 +7,22 @@ import SubTitle from '../../components/SubTitle'
 import Title from '../../components/Title'
 import './IntroPage.css'
 import { NavLink, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+const apiUrl = 'https://vunafind.onrender.com'
 
 function IntroPage() {
   let navigate = useNavigate()
-
+  useEffect(() => {
+    async function ping() {
+      try {
+        const repsonse = await axios.get(`${apiUrl}`)
+        console.log(repsonse)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    ping()
+  },[])
   return (
     // <div className='intropage-container'>
     <AuthBackgroundImage>
@@ -29,11 +41,11 @@ function IntroPage() {
           Student Login
         </FlatButton>
         <div className='nav-buttons'>
-        <NavLink to='/admin/signup'>
+        {/* <NavLink to='/admin/signup'>
             Admin Sign up
-        </NavLink>
+        </NavLink> */}
         <NavLink to='/student/signup'>
-            Student Sign up
+            New User?
         </NavLink>
         </div>
       </div>

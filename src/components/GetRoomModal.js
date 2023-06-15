@@ -13,9 +13,8 @@ const GetRoomModal = () => {
     e.preventDefault()
     localStorage.setItem('roomAndBed', JSON.stringify({ RoomNumber: getRoom, bedSpace: getBed }))
     // setGenerated(true)
-    alert('Generating room in progress......')
+    alert('Allocating room in progress......')
     localStorage.setItem('generated', 'true')
-    alert('Generating room in progress......')
 
 
     alert('You have successfully be allocated a room')

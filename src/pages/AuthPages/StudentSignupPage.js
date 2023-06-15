@@ -142,7 +142,7 @@ const StudentSignupPage = () => {
         <AuthCard style={{width:'800px',height:'100%'}}>
       <div className="signup-div">
         <div className="signup-header">
-          <h1>APPLICANT LOGIN</h1>
+          <h1>Student Registration</h1>
           <p>Enter your details to gain access to our application</p>
         </div>
         <form

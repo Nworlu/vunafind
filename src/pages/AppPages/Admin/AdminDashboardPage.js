@@ -51,15 +51,15 @@ function AdminDashboardPage() {
             Authorization: `Bearer ${authCtx.userToken}`,
             'Content-Type': 'application/json',
           },
-        });
-        setHostel(response.data.hostels);
-        console.log(response);
+        })
+        setHostel(response.data.hostels)
+        console.log(response)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
-    getHostels();
-  }, []);
+    getHostels()
+  }, [authCtx.userToken])
 let navigate = useNavigate()
   function handleNav(){
     navigate('/admin/add-hostel')
@@ -92,7 +92,7 @@ let navigate = useNavigate()
     const selectedHostel = isGender.find((data) => data.selected);
     return hostel.filter(
       (h) =>
-        h.gender === selectedHostel.gender
+        h.category === selectedHostel.gender
         // h.type === selectedHostel.type
     );
   }

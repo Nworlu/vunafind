@@ -113,7 +113,7 @@ const navigate = useNavigate();
               <li>
                 <NavLink to={'/student/get-room'} style={sidebarStyle}>
                   <Home2 className='icon' />
-                  <span>Get Room</span>
+                  <span>Your Room</span>
                 </NavLink>
               </li>
             </ul>

@@ -68,7 +68,7 @@ function StudentDashboardPage() {
       }
     }
     getHostels()
-  },[])
+  },[authCtx.userToken])
 
   function selectGender(gender){
     const updatedButtons = isGender.map((data) => {
@@ -81,11 +81,13 @@ function StudentDashboardPage() {
       setIsGender(updatedButtons)
       console.log(updatedButtons)
   }
-  function getFilteredHostels(){
-    const selectedHostel = isHostel.find((data) => data.selected)
-    console.log(selectedHostel)
-    return hostel.filter((h)=>h.gender === selectedHostel.gender)
-  }
+ function getFilteredHostels() {
+   const selectedHostel = isGender.find((data) => data.selected)
+   return hostel.filter(
+     (h) => h.category === selectedHostel.gender
+     // h.type === selectedHostel.type
+   )
+ }
   // function selectHostel(hostel){
   //   const updatedButtons = isHostel.map((data) => {
   //     if ( data.id === hostel) {
@@ -119,7 +121,7 @@ function StudentDashboardPage() {
       </div>
       <div className="student-dashboard-hostel-container">
         {getFilteredHostels().map((hostel) => (
-          <div className="student-dashboard-hostel-div" onClick={(e)=>navigate(`/student/dashboard/hostel-details/${hostel._id}`)} key={hostel.id}>
+          <div className="student-dashboard-hostel-div" onClick={(e)=>navigate(`/student/dashboard/hostel-details/${hostel._id}`)} key={hostel._id}>
             <div className="student-dashboard-hostel-img-container">
               <img src={hostel?.images?.[0]} alt="hostel-pic" />
               <div className="student-dashboard-available">

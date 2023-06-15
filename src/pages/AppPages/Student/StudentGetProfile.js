@@ -54,8 +54,7 @@ const apiUrl = "https://vunafind.onrender.com";
                 <img src={user5} />
               </div>
               <div>
-                <button onClick={handleDelete}>Delete Student</button>
-                <button onClick={handleOpenModal}>Edit Profile</button>
+                <button style={{color:'green'}} onClick={handleOpenModal}>Edit Profile</button>
               </div>
             </div>
             <div className='admin-get-student-detail-form'>
